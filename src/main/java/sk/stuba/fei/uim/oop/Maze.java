@@ -87,12 +87,4 @@ public class Maze {
         return unvisitedNeighbours.get(pos);
     }
 
-    private int findingNeighbours(MazePart mazePart){
-        int currentMazePartI = mazePart.getI();
-        int currentMazePartJ = mazePart.getJ();
-        if(currentMazePartI==0){
-
-        }
-        return 2;
-    }
 }
