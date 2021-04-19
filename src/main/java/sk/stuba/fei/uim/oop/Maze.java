@@ -6,18 +6,18 @@ import java.util.Random;
 
 public class Maze {
     public ArrayList<MazePart> maze;
-    public int mazeWidthHeight = 13;
-    public int mazeLength = mazeWidthHeight*mazeWidthHeight;
+    private int mazeWidthHeight = 13;
+    private int mazeLength = mazeWidthHeight*mazeWidthHeight;
 
     public Maze() {
         maze = new ArrayList<>();
         for(int i = 0; i < mazeWidthHeight; i++){
             for(int j = 0; j < mazeWidthHeight; j++){
-                if(i==0 || i==12){
+                if(i==0 || i==mazeWidthHeight-1){
                     maze.add(new MazePart((mazeWidthHeight)*i+j, i, j));
                     maze.get((mazeWidthHeight)*i+j).setPis('X');
                 }
-                else if(j==0 || j==12){
+                else if(j==0 || j==mazeWidthHeight-1){
                     maze.add(new MazePart((mazeWidthHeight)*i+j, i, j));
                     maze.get((mazeWidthHeight)*i+j).setPis('X');
                 }
@@ -43,7 +43,7 @@ public class Maze {
     }
 
     private void generateMaze(){
-        MazePart startMazePart = maze.get(14);
+        MazePart startMazePart = maze.get(mazeWidthHeight +1);
         randomizedDFS(startMazePart);
     }
 
@@ -81,6 +81,10 @@ public class Maze {
         return unvisitedNeighbours.get(pos);
     }
 
+    public int getMazeWidthHeight() {
+        return mazeWidthHeight;
+    }
+
     private void connectCells(MazePart mazePart, MazePart nextMazePart){
         if(mazePart.getPosition()-nextMazePart.getPosition()==1){
             mazePart.setlWall(false);
@@ -94,9 +98,6 @@ public class Maze {
         }else if(nextMazePart.getPosition()-mazePart.getPosition()==mazeWidthHeight){
             mazePart.setdWall(false);
             nextMazePart.setuWall(false);
-        }else{
-            System.out.println("daco je napicu");
         }
     }
-
 }

@@ -96,4 +96,8 @@ public class MazePart extends JPanel {
     public void setdWall(boolean dWall) {
         this.dWall = dWall;
     }
+
+    public void setWall(boolean wall) {
+        this.wall = wall;
+    }
 }

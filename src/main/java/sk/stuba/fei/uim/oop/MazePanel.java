@@ -5,16 +5,12 @@ import java.awt.*;
 
 public class MazePanel extends JPanel {
     public MazePanel() {
-        this.setLayout(new GridLayout(13,13));
-        /*for(int i=0; i<11; i++){
-            for(int j = 0;j<11;j++){
-                this.add(new MazePart(i, i, i));
-            }
-        }*/
         Maze maze = new Maze();
-        for(int i=0; i<13; i++){
-            for(int j = 0;j<13;j++){
-                this.add(maze.maze.get(13*i+j));
+        int mazeWidthHeight = maze.getMazeWidthHeight();
+        this.setLayout(new GridLayout(mazeWidthHeight,mazeWidthHeight));
+        for(int i=0; i<mazeWidthHeight; i++){
+            for(int j = 0;j<mazeWidthHeight;j++){
+                this.add(maze.maze.get(mazeWidthHeight*i+j));
             }
         }
         this.repaint();
