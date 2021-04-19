@@ -27,19 +27,6 @@ public class Maze {
             }
         }
         generateMaze();
-        //printMaze();
-    }
-
-    private void printMaze(){
-        int j = 0;
-        for(int i = 0; i < mazeLength; i++) {
-            if(i == j*13){
-                System.out.println();
-                j++;
-            }
-            //System.out.print(maze.get(i).pis);
-        }
-        System.out.println();
     }
 
     private void generateMaze(){

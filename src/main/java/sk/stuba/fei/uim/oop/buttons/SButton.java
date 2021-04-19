@@ -1,22 +1,11 @@
 package sk.stuba.fei.uim.oop.buttons;
 
-import sk.stuba.fei.uim.oop.MazePart;
-import sk.stuba.fei.uim.oop.PlayerMovement;
+import sk.stuba.fei.uim.oop.Frame;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
+public class SButton extends MyButton {
 
-public class SButton extends MyButton implements ActionListener {
-
-    public SButton(String text, PlayerMovement player, ArrayList<MazePart> maze) {
-        super(text, player, maze);
+    public SButton(String text, Frame frame) {
+        super(text, frame);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        System.out.println("Down");
-        player.setPlayerPosition(13, maze);
-
-    }
 }

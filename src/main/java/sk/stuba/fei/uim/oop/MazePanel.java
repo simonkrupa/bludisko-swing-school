@@ -20,4 +20,8 @@ public class MazePanel extends JPanel {
     public Maze getMaze() {
         return maze;
     }
+
+    public void restart(){
+        MazePanel mazePanel = new MazePanel();
+    }
 }
