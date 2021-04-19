@@ -1,21 +1,36 @@
 package sk.stuba.fei.uim.oop;
 
+import sk.stuba.fei.uim.oop.buttons.*;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class ButtonPanel extends JPanel{
 
     public ButtonPanel() {
+        /*
         JButton wButton = new JButton("w");
         JButton aButton = new JButton("a");
         JButton sButton = new JButton("s");
         JButton dButton = new JButton("d");
-        JButton restartButton = new JButton("RESTART");
+         */
+        //JButton restartButton = new JButton("RESTART");
+        var restartButton = new RestartButton("RESTART");
+        var wButton = new WButton("Up");
+        var aButton = new AButton("Left");
+        var sButton = new SButton("Down");
+        var dButton = new DButton("Right");
 
-        this.setBackground(Color.YELLOW);
-        var layout = new BorderLayout();
+        var layout = new GridLayout(2,3);
         this.setLayout(layout);
 
+        this.add(restartButton);
+        this.add(wButton);
+        this.add(new JLabel());
+        this.add(aButton);
+        this.add(sButton);
+        this.add(dButton);
+        /*
         var wsPanel = new JPanel();
         wsPanel.setLayout(new BorderLayout());
         wsPanel.add(wButton, BorderLayout.NORTH);
@@ -32,6 +47,8 @@ public class ButtonPanel extends JPanel{
         this.add(wsPanel, BorderLayout.CENTER);
         this.add(dButton, BorderLayout.LINE_END);
         this.add(restartButton, BorderLayout.PAGE_END);
+
+         */
     }
 
 }
