@@ -15,11 +15,11 @@ public class Maze {
             for(int j = 0; j < mazeWidthHeight; j++){
                 if(i==0 || i==mazeWidthHeight-1){
                     maze.add(new MazePart((mazeWidthHeight)*i+j, i, j));
-                    maze.get((mazeWidthHeight)*i+j).setPis('X');
+                    maze.get((mazeWidthHeight)*i+j).setWall(true);
                 }
                 else if(j==0 || j==mazeWidthHeight-1){
                     maze.add(new MazePart((mazeWidthHeight)*i+j, i, j));
-                    maze.get((mazeWidthHeight)*i+j).setPis('X');
+                    maze.get((mazeWidthHeight)*i+j).setWall(true);
                 }
                 else{
                     maze.add(new MazePart((mazeWidthHeight)*i+j, i, j));
@@ -27,7 +27,7 @@ public class Maze {
             }
         }
         generateMaze();
-        printMaze();
+        //printMaze();
     }
 
     private void printMaze(){
@@ -37,7 +37,7 @@ public class Maze {
                 System.out.println();
                 j++;
             }
-            System.out.print(maze.get(i).pis);
+            //System.out.print(maze.get(i).pis);
         }
         System.out.println();
     }
@@ -61,16 +61,16 @@ public class Maze {
     private MazePart randomUnvisitedNeighbour(MazePart mazePart){
         ArrayList<MazePart> unvisitedNeighbours = new ArrayList<>();
         int currentMazePartPos = mazePart.getPosition();
-        if(maze.get(currentMazePartPos-1).pis!='X' && !maze.get(currentMazePartPos - 1).isVisited()){
+        if(!maze.get(currentMazePartPos-1).isWall() && !maze.get(currentMazePartPos - 1).isVisited()){
             unvisitedNeighbours.add(maze.get(currentMazePartPos-1));
         }
-        if(maze.get(currentMazePartPos + 1).pis!='X' && !maze.get(currentMazePartPos + 1).isVisited()){
+        if(!maze.get(currentMazePartPos + 1).isWall() && !maze.get(currentMazePartPos + 1).isVisited()){
             unvisitedNeighbours.add(maze.get(currentMazePartPos + 1));
         }
-        if(maze.get(currentMazePartPos - mazeWidthHeight).pis!='X' && !maze.get(currentMazePartPos - mazeWidthHeight).isVisited()){
+        if(!maze.get(currentMazePartPos - mazeWidthHeight).isWall() && !maze.get(currentMazePartPos - mazeWidthHeight).isVisited()){
             unvisitedNeighbours.add(maze.get(currentMazePartPos - mazeWidthHeight));
         }
-        if(maze.get(currentMazePartPos + mazeWidthHeight).pis!='X' && !maze.get(currentMazePartPos + mazeWidthHeight).isVisited()){
+        if(!maze.get(currentMazePartPos + mazeWidthHeight).isWall() && !maze.get(currentMazePartPos + mazeWidthHeight).isVisited()){
             unvisitedNeighbours.add(maze.get(currentMazePartPos + mazeWidthHeight));
         }
         if(unvisitedNeighbours.isEmpty()){
