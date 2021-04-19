@@ -21,6 +21,14 @@ public class Maze {
                     maze.add(new MazePart((mazeWidthHeight)*i+j, i, j));
                     maze.get((mazeWidthHeight)*i+j).setWall(true);
                 }
+                else if(i==1 && j==1){
+                    maze.add(new MazePart((mazeWidthHeight)*i+j, i, j));
+                    maze.get((mazeWidthHeight)*i+j).setStart(true);
+                }
+                else if(i==mazeWidthHeight-2 && j==mazeWidthHeight-2){
+                    maze.add(new MazePart((mazeWidthHeight)*i+j, i, j));
+                    maze.get((mazeWidthHeight)*i+j).setFinish(true);
+                }
                 else{
                     maze.add(new MazePart((mazeWidthHeight)*i+j, i, j));
                 }
