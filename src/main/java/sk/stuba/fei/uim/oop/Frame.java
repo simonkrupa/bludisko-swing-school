@@ -11,12 +11,15 @@ public class Frame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
 
-        ButtonPanel buttonPanel = new ButtonPanel();
-        this.add(buttonPanel, BorderLayout.NORTH);
-
         MazePanel mazePanel = new MazePanel();
         this.add(mazePanel);
 
+        PlayerMovement player = new PlayerMovement();
+        player.move(mazePanel.getMaze().maze);
+
+        ButtonPanel buttonPanel = new ButtonPanel(player, mazePanel.getMaze().maze);
+        this.add(buttonPanel, BorderLayout.NORTH);
+        this.repaint();
         this.setVisible(true);
     }
 }

@@ -14,12 +14,14 @@ public class MazePart extends JPanel {
     private boolean rWall = true;
     private boolean uWall = true;
     private boolean dWall = true;
+    private boolean player = false;
+
 
     public MazePart(int position, int i, int j) {
         this.position = position;
         this.i = i;
         this.j = j;
-
+        this.repaint();
         this.setVisible(true);
     }
 
@@ -39,6 +41,13 @@ public class MazePart extends JPanel {
         if (dWall) {
             g.drawLine(0, this.getHeight() - 1, this.getWidth(), this.getHeight() - 1);
         }
+        if(player) {
+            g.drawOval(0, 0, this.getWidth(), this.getHeight());
+        }
+    }
+
+    public void setPlayer(boolean player) {
+        this.player = player;
     }
 
     public int getPosition() {
@@ -51,7 +60,7 @@ public class MazePart extends JPanel {
 
     public void setVisited(boolean visited) {
         this.visited = visited;
-        
+
     }
 
 
@@ -78,5 +87,21 @@ public class MazePart extends JPanel {
 
     public boolean isWall() {
         return wall;
+    }
+
+    public boolean islWall() {
+        return lWall;
+    }
+
+    public boolean isrWall() {
+        return rWall;
+    }
+
+    public boolean isuWall() {
+        return uWall;
+    }
+
+    public boolean isdWall() {
+        return dWall;
     }
 }

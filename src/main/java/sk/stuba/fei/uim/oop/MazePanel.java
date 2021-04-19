@@ -4,8 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MazePanel extends JPanel {
+    private Maze maze;
     public MazePanel() {
-        Maze maze = new Maze();
+        maze = new Maze();
         int mazeWidthHeight = maze.getMazeWidthHeight();
         this.setLayout(new GridLayout(mazeWidthHeight,mazeWidthHeight));
         for(int i=0; i<mazeWidthHeight; i++){
@@ -14,5 +15,9 @@ public class MazePanel extends JPanel {
             }
         }
         this.repaint();
+    }
+
+    public Maze getMaze() {
+        return maze;
     }
 }

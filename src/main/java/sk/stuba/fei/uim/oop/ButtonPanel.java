@@ -4,10 +4,11 @@ import sk.stuba.fei.uim.oop.buttons.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class ButtonPanel extends JPanel{
 
-    public ButtonPanel() {
+    public ButtonPanel(PlayerMovement player, ArrayList<MazePart> maze) {
         /*
         JButton wButton = new JButton("w");
         JButton aButton = new JButton("a");
@@ -15,11 +16,11 @@ public class ButtonPanel extends JPanel{
         JButton dButton = new JButton("d");
          */
         //JButton restartButton = new JButton("RESTART");
-        var restartButton = new RestartButton("RESTART");
-        var wButton = new WButton("Up");
-        var aButton = new AButton("Left");
-        var sButton = new SButton("Down");
-        var dButton = new DButton("Right");
+        var restartButton = new RestartButton("RESTART", player, maze);
+        var wButton = new WButton("Up", player, maze);
+        var aButton = new AButton("Left", player, maze);
+        var sButton = new SButton("Down", player, maze);
+        var dButton = new DButton("Right", player, maze);
 
         var layout = new GridLayout(2,3);
         this.setLayout(layout);
