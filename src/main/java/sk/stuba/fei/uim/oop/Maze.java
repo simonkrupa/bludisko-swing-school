@@ -15,22 +15,17 @@ public class Maze {
             for(int j = 0; j < mazeWidthHeight; j++){
                 if(i==0 || i==12){
                     maze.add(new MazePart((mazeWidthHeight)*i+j, i, j));
-                    maze.get((mazeWidthHeight)*i+j).pis = 'X';
+                    maze.get((mazeWidthHeight)*i+j).setPis('X');
                 }
                 else if(j==0 || j==12){
                     maze.add(new MazePart((mazeWidthHeight)*i+j, i, j));
-                    maze.get((mazeWidthHeight)*i+j).pis = 'X';
+                    maze.get((mazeWidthHeight)*i+j).setPis('X');
                 }
                 else{
                     maze.add(new MazePart((mazeWidthHeight)*i+j, i, j));
                 }
             }
         }
-        /*
-        for(int position = 0; position < mazeLength; position++){
-            maze.add(new MazePart(position));
-        }
-        */
         generateMaze();
         printMaze();
     }
@@ -53,11 +48,10 @@ public class Maze {
     }
 
     private void randomizedDFS(MazePart mazePart){
-        printMaze();
         mazePart.setVisited(true);
         MazePart nextMazePart = randomUnvisitedNeighbour(mazePart);
         while(nextMazePart!=null){
-            //connectCells
+            connectCells(mazePart, nextMazePart);
             nextMazePart.setVisited(true);
             randomizedDFS(nextMazePart);
             nextMazePart = randomUnvisitedNeighbour(mazePart);
@@ -85,6 +79,24 @@ public class Maze {
         Random rand = new Random();
         int pos = rand.nextInt(unvisitedNeighbours.size());
         return unvisitedNeighbours.get(pos);
+    }
+
+    private void connectCells(MazePart mazePart, MazePart nextMazePart){
+        if(mazePart.getPosition()-nextMazePart.getPosition()==1){
+            mazePart.setlWall(false);
+            nextMazePart.setrWall(false);
+        }else if(nextMazePart.getPosition() - mazePart.getPosition()==1){
+            mazePart.setrWall(false);
+            nextMazePart.setlWall(false);
+        }else if(mazePart.getPosition()-nextMazePart.getPosition()==mazeWidthHeight){
+            mazePart.setuWall(false);
+            nextMazePart.setdWall(false);
+        }else if(nextMazePart.getPosition()-mazePart.getPosition()==mazeWidthHeight){
+            mazePart.setdWall(false);
+            nextMazePart.setuWall(false);
+        }else{
+            System.out.println("daco je napicu");
+        }
     }
 
 }
