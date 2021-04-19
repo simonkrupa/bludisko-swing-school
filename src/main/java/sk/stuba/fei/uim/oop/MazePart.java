@@ -51,7 +51,7 @@ public class MazePart extends JPanel {
 
     public void setVisited(boolean visited) {
         this.visited = visited;
-        this.setBackground(Color.GREEN);
+        
     }
 
 
