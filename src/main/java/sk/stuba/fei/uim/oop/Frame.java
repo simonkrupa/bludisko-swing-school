@@ -19,20 +19,25 @@ public class Frame extends JFrame implements KeyListener, ActionListener {
         this.setLayout(new BorderLayout());
         this.addKeyListener(this);
 
-        newMazePanel();
+        createPanels();
 
         this.repaint();
         this.setVisible(true);
     }
-    public void newMazePanel(){
+
+    private void createPanels(){
+        newMazePanel();
+        newButtonPanel();
+    }
+
+    private void newMazePanel(){
         this.mazePanel = new MazePanel();
         this.add(mazePanel);
         this.player = new PlayerMovement();
         player.move(mazePanel.getMaze().maze);
-        newButtonPanel();
     }
 
-    public void newButtonPanel(){
+    private void newButtonPanel(){
         this.buttonPanel = new ButtonPanel(player, mazePanel.getMaze().maze, this);
         this.add(buttonPanel, BorderLayout.NORTH);
     }
@@ -57,6 +62,12 @@ public class Frame extends JFrame implements KeyListener, ActionListener {
         }
         if(e.getSource()==buttonPanel.restartButton){
             System.out.println("restart");
+            this.remove(mazePanel);
+            this.remove(buttonPanel);
+            createPanels();
+
+            this.repaint();
+            this.setVisible(true);
         }
     }
 
