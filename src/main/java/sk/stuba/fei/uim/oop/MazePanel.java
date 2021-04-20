@@ -21,7 +21,4 @@ public class MazePanel extends JPanel {
         return maze;
     }
 
-    public void restart(){
-        MazePanel mazePanel = new MazePanel();
-    }
 }

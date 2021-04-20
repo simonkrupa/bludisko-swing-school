@@ -7,7 +7,6 @@ import java.util.Random;
 public class Maze {
     public ArrayList<MazePart> maze;
     private int mazeWidthHeight = 13;
-    private int mazeLength = mazeWidthHeight*mazeWidthHeight;
 
     public Maze() {
         maze = new ArrayList<>();
