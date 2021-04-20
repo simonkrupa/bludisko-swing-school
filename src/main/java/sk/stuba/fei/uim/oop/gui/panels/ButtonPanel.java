@@ -1,6 +1,7 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.gui.panels;
 
-import sk.stuba.fei.uim.oop.buttons.*;
+import sk.stuba.fei.uim.oop.gui.buttons.*;
+import sk.stuba.fei.uim.oop.gui.Frame;
 
 import javax.swing.*;
 import java.awt.*;

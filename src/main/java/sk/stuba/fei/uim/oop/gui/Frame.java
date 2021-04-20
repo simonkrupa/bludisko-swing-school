@@ -1,4 +1,8 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.gui;
+
+import sk.stuba.fei.uim.oop.gui.mazes.logic.PlayerMovement;
+import sk.stuba.fei.uim.oop.gui.panels.ButtonPanel;
+import sk.stuba.fei.uim.oop.gui.panels.MazePanel;
 
 import javax.swing.*;
 import java.awt.*;

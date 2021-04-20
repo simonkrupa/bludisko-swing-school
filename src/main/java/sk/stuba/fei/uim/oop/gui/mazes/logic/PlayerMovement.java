@@ -1,4 +1,7 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.gui.mazes.logic;
+
+import sk.stuba.fei.uim.oop.gui.panels.ButtonPanel;
+import sk.stuba.fei.uim.oop.gui.Frame;
 
 import java.util.ArrayList;
 

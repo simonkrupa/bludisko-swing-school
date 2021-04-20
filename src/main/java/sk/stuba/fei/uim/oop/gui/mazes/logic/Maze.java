@@ -1,4 +1,4 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.gui.mazes.logic;
 
 
 import java.util.ArrayList;

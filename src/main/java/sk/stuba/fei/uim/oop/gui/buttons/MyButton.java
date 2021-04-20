@@ -1,6 +1,6 @@
-package sk.stuba.fei.uim.oop.buttons;
+package sk.stuba.fei.uim.oop.gui.buttons;
 
-import sk.stuba.fei.uim.oop.Frame;
+import sk.stuba.fei.uim.oop.gui.Frame;
 import javax.swing.*;
 
 public abstract class MyButton extends JButton {
