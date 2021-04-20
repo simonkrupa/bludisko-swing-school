@@ -5,6 +5,13 @@ import java.util.ArrayList;
 public class PlayerMovement {
     private int playerPosition = 14;
     private int lastPlayerPosition = 14;
+    private ButtonPanel buttonPanel;
+    private Frame frame;
+
+    public PlayerMovement(ButtonPanel buttonPanel, Frame frame) {
+        this.buttonPanel = buttonPanel;
+        this.frame = frame;
+    }
 
     public void move(ArrayList<MazePart> maze){
         maze.get(lastPlayerPosition).setPlayer(false);
@@ -16,6 +23,10 @@ public class PlayerMovement {
             this.lastPlayerPosition = 14;
             maze.get(playerPosition).setPlayer(true);
             maze.get(lastPlayerPosition).repaint();
+            buttonPanel.setCount();
+            frame.remove(frame.mazePanel);
+            frame.newMazePanel();
+            this.move(frame.mazePanel.getMaze().maze);
         }
         maze.get(playerPosition).repaint();
     }
@@ -48,4 +59,5 @@ public class PlayerMovement {
         }
         return false;
     }
+
 }

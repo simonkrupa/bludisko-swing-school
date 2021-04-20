@@ -4,7 +4,6 @@ import sk.stuba.fei.uim.oop.buttons.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 public class ButtonPanel extends JPanel{
     public WButton wButton;
@@ -15,7 +14,7 @@ public class ButtonPanel extends JPanel{
     public JLabel counter;
     public int count = 0;
 
-    public ButtonPanel(PlayerMovement player, ArrayList<MazePart> maze, Frame frame) {
+    public ButtonPanel(Frame frame) {
 
         restartButton = new RestartButton("RESTART", frame);
         wButton = new WButton("Up", frame);
@@ -37,4 +36,8 @@ public class ButtonPanel extends JPanel{
 
     }
 
+    public void setCount() {
+        this.count = this.count + 1;
+        counter.setText("Win counter: " + count);
+    }
 }
