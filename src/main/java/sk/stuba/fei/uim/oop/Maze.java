@@ -6,10 +6,11 @@ import java.util.Random;
 
 public class Maze {
     public ArrayList<MazePart> maze;
-    private int mazeWidthHeight = 13;
+    private int mazeWidthHeight;
 
-    public Maze() {
+    public Maze(int mazeWidthHeight) {
         maze = new ArrayList<>();
+        this.mazeWidthHeight = mazeWidthHeight;
         for(int i = 0; i < mazeWidthHeight; i++){
             for(int j = 0; j < mazeWidthHeight; j++){
                 if(i==0 || i==mazeWidthHeight-1){
@@ -75,9 +76,6 @@ public class Maze {
         return unvisitedNeighbours.get(pos);
     }
 
-    public int getMazeWidthHeight() {
-        return mazeWidthHeight;
-    }
 
     private void connectCells(MazePart mazePart, MazePart nextMazePart){
         if(mazePart.getPosition()-nextMazePart.getPosition()==1){

@@ -3,14 +3,18 @@ package sk.stuba.fei.uim.oop;
 import java.util.ArrayList;
 
 public class PlayerMovement {
-    private int playerPosition = 14;
-    private int lastPlayerPosition = 14;
+    private int playerPosition;
+    private int lastPlayerPosition;
     private ButtonPanel buttonPanel;
     private Frame frame;
+    private int mazeWidthHeight;
 
-    public PlayerMovement(ButtonPanel buttonPanel, Frame frame) {
+    public PlayerMovement(ButtonPanel buttonPanel, Frame frame, int mazeWidthHeight) {
         this.buttonPanel = buttonPanel;
         this.frame = frame;
+        this.mazeWidthHeight = mazeWidthHeight;
+        this.playerPosition = mazeWidthHeight+1;
+        this.lastPlayerPosition = mazeWidthHeight+1;
     }
 
     public void move(ArrayList<MazePart> maze){
@@ -51,10 +55,10 @@ public class PlayerMovement {
         if(this.playerPosition-lastPlayerPosition==-1 && !maze.get(this.playerPosition).isrWall()){
             return true;
         }
-        if(this.playerPosition-lastPlayerPosition==13 && !maze.get(this.playerPosition).isuWall()){
+        if(this.playerPosition-lastPlayerPosition==mazeWidthHeight && !maze.get(this.playerPosition).isuWall()){
             return true;
         }
-        if(this.playerPosition-lastPlayerPosition==-13 && !maze.get(this.playerPosition).isdWall()){
+        if(this.playerPosition-lastPlayerPosition==-mazeWidthHeight && !maze.get(this.playerPosition).isdWall()){
             return true;
         }
         return false;

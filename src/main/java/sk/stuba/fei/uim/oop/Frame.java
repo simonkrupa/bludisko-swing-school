@@ -11,6 +11,7 @@ public class Frame extends JFrame implements KeyListener, ActionListener {
     public MazePanel mazePanel;
     private ButtonPanel buttonPanel;
     private PlayerMovement player;
+    private int mazeWidthHeight = 13;
 
     public Frame() throws HeadlessException {
 
@@ -30,7 +31,7 @@ public class Frame extends JFrame implements KeyListener, ActionListener {
     }
 
     public void newMazePanel(){
-        this.mazePanel = new MazePanel();
+        this.mazePanel = new MazePanel(mazeWidthHeight);
         this.add(mazePanel);
         this.repaint();
         this.setVisible(true);
@@ -39,7 +40,7 @@ public class Frame extends JFrame implements KeyListener, ActionListener {
     private void newButtonPanel(){
         this.buttonPanel = new ButtonPanel(this);
         this.add(buttonPanel, BorderLayout.NORTH);
-        this.player = new PlayerMovement(buttonPanel, this);
+        this.player = new PlayerMovement(buttonPanel, this, mazeWidthHeight);
         player.move(mazePanel.getMaze().maze);
     }
 
@@ -47,7 +48,7 @@ public class Frame extends JFrame implements KeyListener, ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==buttonPanel.wButton){
             System.out.println("Up");
-            player.setPlayerPosition(-13, mazePanel.getMaze().maze);
+            player.setPlayerPosition(-mazeWidthHeight, mazePanel.getMaze().maze);
         }
         if(e.getSource()==buttonPanel.aButton){
             System.out.println("Left");
@@ -55,7 +56,7 @@ public class Frame extends JFrame implements KeyListener, ActionListener {
         }
         if(e.getSource()==buttonPanel.sButton){
             System.out.println("Down");
-            player.setPlayerPosition(13, mazePanel.getMaze().maze);
+            player.setPlayerPosition(mazeWidthHeight, mazePanel.getMaze().maze);
         }
         if(e.getSource()==buttonPanel.dButton){
             System.out.println("Right");
@@ -75,7 +76,7 @@ public class Frame extends JFrame implements KeyListener, ActionListener {
         int key = e.getKeyCode();
         if(key == KeyEvent.VK_W) {
             System.out.println("Up");
-            player.setPlayerPosition(-13, mazePanel.getMaze().maze);
+            player.setPlayerPosition(-mazeWidthHeight, mazePanel.getMaze().maze);
         }
         if(key == KeyEvent.VK_A) {
             System.out.println("Left");
@@ -83,7 +84,7 @@ public class Frame extends JFrame implements KeyListener, ActionListener {
         }
         if(key == KeyEvent.VK_S) {
             System.out.println("Down");
-            player.setPlayerPosition(13, mazePanel.getMaze().maze);
+            player.setPlayerPosition(mazeWidthHeight, mazePanel.getMaze().maze);
         }
         if(key == KeyEvent.VK_D) {
             System.out.println("Right");
