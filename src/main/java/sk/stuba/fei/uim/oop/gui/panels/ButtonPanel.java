@@ -1,7 +1,6 @@
 package sk.stuba.fei.uim.oop.gui.panels;
 
 import sk.stuba.fei.uim.oop.gui.buttons.*;
-import sk.stuba.fei.uim.oop.gui.Frame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,13 +14,13 @@ public class ButtonPanel extends JPanel{
     public JLabel counter;
     public int count = 0;
 
-    public ButtonPanel(Frame frame) {
+    public ButtonPanel() {
 
-        restartButton = new RestartButton("RESTART", frame);
-        wButton = new WButton("Up", frame);
-        aButton = new AButton("Left", frame);
-        sButton = new SButton("Down", frame);
-        dButton = new DButton("Right", frame);
+        restartButton = new RestartButton("RESTART");
+        wButton = new WButton("Up");
+        aButton = new AButton("Left");
+        sButton = new SButton("Down");
+        dButton = new DButton("Right");
 
         counter = new JLabel("Win counter: " + count);
 

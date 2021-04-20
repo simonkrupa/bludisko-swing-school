@@ -28,6 +28,7 @@ public class PlayerMovement {
         maze.get(lastPlayerPosition).repaint();
         maze.get(playerPosition).setPlayer(true);
         if(maze.get(playerPosition) instanceof MazeFinish){
+            System.out.println("skuska");
             maze.get(playerPosition).setPlayer(false);
             this.playerPosition = mazeWidthHeight+1;
             this.lastPlayerPosition = mazeWidthHeight+1;

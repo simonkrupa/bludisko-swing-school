@@ -1,4 +1,4 @@
-package sk.stuba.fei.uim.oop.gui;
+package sk.stuba.fei.uim.oop.gui.listeners;
 
 import sk.stuba.fei.uim.oop.gui.logic.PlayerMovement;
 import sk.stuba.fei.uim.oop.gui.panels.MazePanel;
@@ -21,19 +21,26 @@ public class MyKeyListener implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
         if(key == KeyEvent.VK_W) {
-            System.out.println("Up");
+            //System.out.println("Up");
+            System.out.println(player.playerPosition);
             player.setPlayerPosition(-mazeWidthHeight, mazePanel.getMaze().maze);
         }
         if(key == KeyEvent.VK_A) {
-            System.out.println("Left");
+            //System.out.println("Left");
+            System.out.println(player.playerPosition);
+
             player.setPlayerPosition(-1, mazePanel.getMaze().maze);
         }
         if(key == KeyEvent.VK_S) {
-            System.out.println("Down");
+            //System.out.println("Down");
+            System.out.println(player.playerPosition);
+
             player.setPlayerPosition(mazeWidthHeight, mazePanel.getMaze().maze);
         }
         if(key == KeyEvent.VK_D) {
-            System.out.println("Right");
+            //System.out.println("Right");
+            System.out.println(player.playerPosition);
+
             player.setPlayerPosition(1, mazePanel.getMaze().maze);
         }
     }
