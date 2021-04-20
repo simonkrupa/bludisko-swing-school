@@ -1,6 +1,6 @@
 package sk.stuba.fei.uim.oop.gui;
 
-import sk.stuba.fei.uim.oop.gui.mazes.PlayerMovement;
+import sk.stuba.fei.uim.oop.gui.logic.PlayerMovement;
 import sk.stuba.fei.uim.oop.gui.panels.ButtonPanel;
 import sk.stuba.fei.uim.oop.gui.panels.MazePanel;
 

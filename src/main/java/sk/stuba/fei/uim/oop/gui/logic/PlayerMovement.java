@@ -1,5 +1,8 @@
-package sk.stuba.fei.uim.oop.gui.mazes;
+package sk.stuba.fei.uim.oop.gui.logic;
 
+import sk.stuba.fei.uim.oop.gui.mazes.MazeFinish;
+import sk.stuba.fei.uim.oop.gui.mazes.MazePart;
+import sk.stuba.fei.uim.oop.gui.mazes.MazeWall;
 import sk.stuba.fei.uim.oop.gui.panels.ButtonPanel;
 import sk.stuba.fei.uim.oop.gui.Frame;
 
@@ -24,7 +27,7 @@ public class PlayerMovement {
         maze.get(lastPlayerPosition).setPlayer(false);
         maze.get(lastPlayerPosition).repaint();
         maze.get(playerPosition).setPlayer(true);
-        if(maze.get(playerPosition).isFinish()){
+        if(maze.get(playerPosition) instanceof MazeFinish){
             maze.get(playerPosition).setPlayer(false);
             this.playerPosition = 14;
             this.lastPlayerPosition = 14;
@@ -39,7 +42,7 @@ public class PlayerMovement {
     }
 
     public void setPlayerPosition(int playerPosition, ArrayList<MazePart> maze) {
-        if(maze.get(this.playerPosition+playerPosition).isWall()){
+        if(maze.get(this.playerPosition+playerPosition) instanceof MazeWall){
             return;
         }
         this.lastPlayerPosition = this.playerPosition;

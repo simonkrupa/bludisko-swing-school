@@ -1,5 +1,7 @@
-package sk.stuba.fei.uim.oop.gui.mazes;
+package sk.stuba.fei.uim.oop.gui.logic;
 
+
+import sk.stuba.fei.uim.oop.gui.mazes.*;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -14,23 +16,19 @@ public class Maze {
         for(int i = 0; i < mazeWidthHeight; i++){
             for(int j = 0; j < mazeWidthHeight; j++){
                 if(i==0 || i==mazeWidthHeight-1){
-                    maze.add(new MazePart((mazeWidthHeight)*i+j, i, j));
-                    maze.get((mazeWidthHeight)*i+j).setWall(true);
+                    maze.add(new MazeWall((mazeWidthHeight)*i+j));
                 }
                 else if(j==0 || j==mazeWidthHeight-1){
-                    maze.add(new MazePart((mazeWidthHeight)*i+j, i, j));
-                    maze.get((mazeWidthHeight)*i+j).setWall(true);
+                    maze.add(new MazeWall((mazeWidthHeight)*i+j));
                 }
                 else if(i==1 && j==1){
-                    maze.add(new MazePart((mazeWidthHeight)*i+j, i, j));
-                    maze.get((mazeWidthHeight)*i+j).setStart(true);
+                    maze.add(new MazeStart((mazeWidthHeight)*i+j));
                 }
                 else if(i==mazeWidthHeight-2 && j==mazeWidthHeight-2){
-                    maze.add(new MazePart((mazeWidthHeight)*i+j, i, j));
-                    maze.get((mazeWidthHeight)*i+j).setFinish(true);
+                    maze.add(new MazeFinish((mazeWidthHeight)*i+j));
                 }
                 else{
-                    maze.add(new MazePart((mazeWidthHeight)*i+j, i, j));
+                    maze.add(new MazeCell((mazeWidthHeight)*i+j));
                 }
             }
         }
@@ -56,16 +54,16 @@ public class Maze {
     private MazePart randomUnvisitedNeighbour(MazePart mazePart){
         ArrayList<MazePart> unvisitedNeighbours = new ArrayList<>();
         int currentMazePartPos = mazePart.getPosition();
-        if(!maze.get(currentMazePartPos-1).isWall() && !maze.get(currentMazePartPos - 1).isVisited()){
+        if(maze.get(currentMazePartPos-1) instanceof MazeCell && !maze.get(currentMazePartPos - 1).isVisited()){
             unvisitedNeighbours.add(maze.get(currentMazePartPos-1));
         }
-        if(!maze.get(currentMazePartPos + 1).isWall() && !maze.get(currentMazePartPos + 1).isVisited()){
+        if(maze.get(currentMazePartPos + 1) instanceof MazeCell && !maze.get(currentMazePartPos + 1).isVisited()){
             unvisitedNeighbours.add(maze.get(currentMazePartPos + 1));
         }
-        if(!maze.get(currentMazePartPos - mazeWidthHeight).isWall() && !maze.get(currentMazePartPos - mazeWidthHeight).isVisited()){
+        if(maze.get(currentMazePartPos - mazeWidthHeight) instanceof MazeCell && !maze.get(currentMazePartPos - mazeWidthHeight).isVisited()){
             unvisitedNeighbours.add(maze.get(currentMazePartPos - mazeWidthHeight));
         }
-        if(!maze.get(currentMazePartPos + mazeWidthHeight).isWall() && !maze.get(currentMazePartPos + mazeWidthHeight).isVisited()){
+        if((maze.get(currentMazePartPos + mazeWidthHeight) instanceof MazeCell) && !maze.get(currentMazePartPos + mazeWidthHeight).isVisited()){
             unvisitedNeighbours.add(maze.get(currentMazePartPos + mazeWidthHeight));
         }
         if(unvisitedNeighbours.isEmpty()){

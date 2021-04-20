@@ -1,6 +1,6 @@
 package sk.stuba.fei.uim.oop.gui.panels;
 
-import sk.stuba.fei.uim.oop.gui.mazes.Maze;
+import sk.stuba.fei.uim.oop.gui.logic.Maze;
 
 import javax.swing.*;
 import java.awt.*;
