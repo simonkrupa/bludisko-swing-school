@@ -12,6 +12,8 @@ public class ButtonPanel extends JPanel{
     public SButton sButton;
     public DButton dButton;
     public RestartButton restartButton;
+    public JLabel counter;
+    public int count = 0;
 
     public ButtonPanel(PlayerMovement player, ArrayList<MazePart> maze, Frame frame) {
 
@@ -21,12 +23,14 @@ public class ButtonPanel extends JPanel{
         sButton = new SButton("Down", frame);
         dButton = new DButton("Right", frame);
 
+        counter = new JLabel("Win counter: " + count);
+
         var layout = new GridLayout(2,3);
         this.setLayout(layout);
 
         this.add(restartButton);
         this.add(wButton);
-        this.add(new JLabel());
+        this.add(counter);
         this.add(aButton);
         this.add(sButton);
         this.add(dButton);
