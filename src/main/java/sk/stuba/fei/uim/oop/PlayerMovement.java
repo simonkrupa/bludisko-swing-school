@@ -10,6 +10,13 @@ public class PlayerMovement {
         maze.get(lastPlayerPosition).setPlayer(false);
         maze.get(lastPlayerPosition).repaint();
         maze.get(playerPosition).setPlayer(true);
+        if(maze.get(playerPosition).isFinish()){
+            maze.get(playerPosition).setPlayer(false);
+            this.playerPosition = 14;
+            this.lastPlayerPosition = 14;
+            maze.get(playerPosition).setPlayer(true);
+            maze.get(lastPlayerPosition).repaint();
+        }
         maze.get(playerPosition).repaint();
     }
 

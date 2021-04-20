@@ -122,4 +122,8 @@ public class MazePart extends JPanel {
     public void setFinish(boolean finish) {
         this.finish = finish;
     }
+
+    public boolean isFinish() {
+        return finish;
+    }
 }
