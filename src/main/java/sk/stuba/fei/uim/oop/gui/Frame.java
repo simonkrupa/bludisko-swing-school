@@ -8,21 +8,19 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
-public class Frame extends JFrame implements KeyListener, ActionListener {
+public class Frame extends JFrame implements ActionListener {
     public MazePanel mazePanel;
     private ButtonPanel buttonPanel;
     private PlayerMovement player;
     private int mazeWidthHeight = 13;
+    private MyKeyListener keyListener;
 
     public Frame() throws HeadlessException {
 
         this.setSize(600,600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
-        this.addKeyListener(this);
 
         createPanels();
     }
@@ -41,11 +39,24 @@ public class Frame extends JFrame implements KeyListener, ActionListener {
         this.setVisible(true);
     }
 
+    public void finishedGame(){
+        buttonPanel.setCount();
+        this.remove(mazePanel);
+        this.newMazePanel();
+        createKeyListener();
+    }
+
     private void newButtonPanel(){
         this.buttonPanel = new ButtonPanel(this);
         this.add(buttonPanel, BorderLayout.NORTH);
+        createKeyListener();
+    }
+
+    private void createKeyListener(){
         this.player = new PlayerMovement(buttonPanel, this, mazeWidthHeight);
         player.move(mazePanel.getMaze().maze);
+        this.keyListener = new MyKeyListener(mazeWidthHeight, mazePanel, player);
+        this.addKeyListener(keyListener);
     }
 
     @Override
@@ -73,34 +84,5 @@ public class Frame extends JFrame implements KeyListener, ActionListener {
             createPanels();
         }
 
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        int key = e.getKeyCode();
-        if(key == KeyEvent.VK_W) {
-            System.out.println("Up");
-            player.setPlayerPosition(-mazeWidthHeight, mazePanel.getMaze().maze);
-        }
-        if(key == KeyEvent.VK_A) {
-            System.out.println("Left");
-            player.setPlayerPosition(-1, mazePanel.getMaze().maze);
-        }
-        if(key == KeyEvent.VK_S) {
-            System.out.println("Down");
-            player.setPlayerPosition(mazeWidthHeight, mazePanel.getMaze().maze);
-        }
-        if(key == KeyEvent.VK_D) {
-            System.out.println("Right");
-            player.setPlayerPosition(1, mazePanel.getMaze().maze);
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
     }
 }

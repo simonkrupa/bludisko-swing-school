@@ -9,7 +9,7 @@ import sk.stuba.fei.uim.oop.gui.Frame;
 import java.util.ArrayList;
 
 public class PlayerMovement {
-    private int playerPosition;
+    public int playerPosition;
     private int lastPlayerPosition;
     private ButtonPanel buttonPanel;
     private Frame frame;
@@ -29,15 +29,14 @@ public class PlayerMovement {
         maze.get(playerPosition).setPlayer(true);
         if(maze.get(playerPosition) instanceof MazeFinish){
             maze.get(playerPosition).setPlayer(false);
-            this.playerPosition = 14;
-            this.lastPlayerPosition = 14;
+            this.playerPosition = mazeWidthHeight+1;
+            this.lastPlayerPosition = mazeWidthHeight+1;
             maze.get(playerPosition).setPlayer(true);
             maze.get(lastPlayerPosition).repaint();
-            buttonPanel.setCount();
-            frame.remove(frame.mazePanel);
-            frame.newMazePanel();
+            frame.finishedGame();
             this.move(frame.mazePanel.getMaze().maze);
         }
+        frame.repaint();
         maze.get(playerPosition).repaint();
     }
 
