@@ -1,4 +1,4 @@
-package sk.stuba.fei.uim.oop.gui.mazes.logic;
+package sk.stuba.fei.uim.oop.gui.mazes;
 
 import javax.swing.*;
 import java.awt.*;

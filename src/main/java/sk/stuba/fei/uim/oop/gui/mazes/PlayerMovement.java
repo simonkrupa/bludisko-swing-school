@@ -1,4 +1,4 @@
-package sk.stuba.fei.uim.oop.gui.mazes.logic;
+package sk.stuba.fei.uim.oop.gui.mazes;
 
 import sk.stuba.fei.uim.oop.gui.panels.ButtonPanel;
 import sk.stuba.fei.uim.oop.gui.Frame;
