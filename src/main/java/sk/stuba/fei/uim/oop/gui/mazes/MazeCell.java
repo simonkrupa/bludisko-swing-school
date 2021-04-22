@@ -15,9 +15,7 @@ public class MazeCell extends MazePart {
         g.setColor(Color.BLACK);
         if(mouse && player){
             this.setBackground(Color.CYAN);
-            this.setBackground(Color.CYAN);
         }else if (mouse){
-            this.setBackground(Color.YELLOW);
             this.setBackground(Color.YELLOW);
         }else{
             this.setBackground(Color.WHITE);

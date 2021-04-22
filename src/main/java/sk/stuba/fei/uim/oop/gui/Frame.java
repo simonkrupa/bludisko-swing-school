@@ -118,7 +118,7 @@ public class Frame extends JFrame implements MouseListener {
             mazePanel.getMaze().maze.get(player.playerPosition).setMouse(true);
             this.way = mazePanel.getMaze().maze.get(player.playerPosition).findWay(mazePanel.getMaze().maze);
             for (var mazePart : way){
-                mazePart.setMouse(true);
+                //mazePart.setMouse(true);
             }
         }else if (way.contains(mazeParte)){
             for(var mazePart : mazePanel.getMaze().maze){
@@ -133,19 +133,6 @@ public class Frame extends JFrame implements MouseListener {
             }
             way.clear();
         }
-        /*
-        else if(e.getComponent()!=mazePanel.getMaze().maze.get(player.playerPosition) && way!=null){
-            System.out.println("cc");
-            if (!way.contains(mazeParte) ){
-                for(var mazePart : way){
-                    mazePart.setMouse(false);
-                    mazePart.repaint();
-                    repaint();
-                }
-            }
-        }
-
-         */
         repaint();
     }
 
@@ -170,8 +157,7 @@ public class Frame extends JFrame implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        /*
-        if(way!=null) {
+        if(!way.isEmpty()) {
             for (var mazePart : way) {
                 if (mazePart == e.getComponent()) {
                     mazePart.setMouse(true);
@@ -180,14 +166,11 @@ public class Frame extends JFrame implements MouseListener {
                 }
             }
         }
-
-         */
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        /*
-        if(way!=null) {
+        if(!way.isEmpty()) {
             for (var mazePart : way) {
                 if (mazePart == e.getComponent()) {
                     mazePart.setMouse(false);
@@ -196,7 +179,5 @@ public class Frame extends JFrame implements MouseListener {
                 }
             }
         }
-
-         */
     }
 }
