@@ -46,10 +46,6 @@ public class Frame extends JFrame implements MouseListener {
     public void createPanels(){
         newMazePanel();
         newButtonPanel();
-        for(int i=0; i<mazeWidthHeight*mazeWidthHeight;i++) {
-            mazePanel.getMaze().maze.get(i).addMouseListener(this);
-        }
-
         this.repaint();
         this.setVisible(true);
     }
@@ -69,6 +65,9 @@ public class Frame extends JFrame implements MouseListener {
         buttonPanel.dButton.removeActionListener(actionListener);
         buttonPanel.restartButton.removeActionListener(actionListener);
         this.removeKeyListener(keyListener);
+        for(int i=0; i<mazeWidthHeight*mazeWidthHeight;i++) {
+            mazePanel.getMaze().maze.get(i).removeMouseListener(this);
+        }
     }
 
     public void finishedGame(){
@@ -97,6 +96,10 @@ public class Frame extends JFrame implements MouseListener {
         buttonPanel.sButton.addActionListener(actionListener);
         buttonPanel.dButton.addActionListener(actionListener);
         buttonPanel.restartButton.addActionListener(actionListener);
+
+        for(int i=0; i<mazeWidthHeight*mazeWidthHeight;i++) {
+            mazePanel.getMaze().maze.get(i).addMouseListener(this);
+        }
 
         this.keyListener = new MyKeyListener(mazeWidthHeight, this.mazePanel, player, this);
         this.addKeyListener(keyListener);
