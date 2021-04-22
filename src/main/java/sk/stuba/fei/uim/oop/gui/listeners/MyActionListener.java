@@ -28,18 +28,22 @@ public class MyActionListener implements ActionListener {
         if(e.getSource()==buttonPanel.wButton){
             System.out.println("Up");
             player.setPlayerPosition(-mazeWidthHeight, mazePanel.getMaze().maze);
+            frame.cancelMouse();
         }
         if(e.getSource()==buttonPanel.aButton){
             System.out.println("Left");
             player.setPlayerPosition(-1, mazePanel.getMaze().maze);
+            frame.cancelMouse();
         }
         if(e.getSource()==buttonPanel.sButton){
             System.out.println("Down");
             player.setPlayerPosition(mazeWidthHeight, mazePanel.getMaze().maze);
+            frame.cancelMouse();
         }
         if(e.getSource()==buttonPanel.dButton){
             System.out.println("Right");
             player.setPlayerPosition(1, mazePanel.getMaze().maze);
+            frame.cancelMouse();
         }
         if(e.getSource()==buttonPanel.restartButton){
             System.out.println("restart");
@@ -48,6 +52,7 @@ public class MyActionListener implements ActionListener {
             frame.repaint();
             frame.removeListeners();
             frame.createPanels();
+            frame.cancelMouse();
         }
     }
 }

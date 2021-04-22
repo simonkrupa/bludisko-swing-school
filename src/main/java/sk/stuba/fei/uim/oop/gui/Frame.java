@@ -31,6 +31,18 @@ public class Frame extends JFrame implements MouseListener {
         createPanels();
     }
 
+    public void setWay(ArrayList<MazePart> way) {
+        this.way = way;
+    }
+
+    public void cancelMouse(){
+        for (var mazePart:mazePanel.getMaze().maze){
+            mazePart.setMouse(false);
+            mazePart.repaint();
+        }
+        way.clear();
+    }
+
     public void createPanels(){
         newMazePanel();
         newButtonPanel();
@@ -86,7 +98,7 @@ public class Frame extends JFrame implements MouseListener {
         buttonPanel.dButton.addActionListener(actionListener);
         buttonPanel.restartButton.addActionListener(actionListener);
 
-        this.keyListener = new MyKeyListener(mazeWidthHeight, this.mazePanel, player);
+        this.keyListener = new MyKeyListener(mazeWidthHeight, this.mazePanel, player, this);
         this.addKeyListener(keyListener);
     }
 
