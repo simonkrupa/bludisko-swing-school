@@ -38,7 +38,7 @@ public class PlayerMovement {
         finishMove(maze);
     }
 
-    public void finishMove(ArrayList<MazePart> maze){
+    private void finishMove(ArrayList<MazePart> maze){
         if(maze.get(playerPosition) instanceof MazeFinish) {
             maze.get(playerPosition).setPlayer(false);
             this.playerPosition = mazeWidthHeight + 1;

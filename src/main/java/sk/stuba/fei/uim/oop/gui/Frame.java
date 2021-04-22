@@ -41,7 +41,7 @@ public class Frame extends JFrame {
     }
 
 
-    public void newMazePanel(){
+    private void newMazePanel(){
         this.mazePanel = new MazePanel(mazeWidthHeight);
         this.add(mazePanel);
         this.repaint();
