@@ -3,23 +3,28 @@ package sk.stuba.fei.uim.oop.gui;
 import sk.stuba.fei.uim.oop.gui.listeners.MyActionListener;
 import sk.stuba.fei.uim.oop.gui.listeners.MyKeyListener;
 import sk.stuba.fei.uim.oop.gui.logic.PlayerMovement;
+import sk.stuba.fei.uim.oop.gui.mazes.MazePart;
 import sk.stuba.fei.uim.oop.gui.panels.ButtonPanel;
 import sk.stuba.fei.uim.oop.gui.panels.MazePanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
-public class Frame extends JFrame{
+public class Frame extends JFrame implements MouseListener {
     public MazePanel mazePanel;
     public ButtonPanel buttonPanel;
     private PlayerMovement player;
     private int mazeWidthHeight = 13;
     private MyKeyListener keyListener;
     private MyActionListener actionListener;
+    private ArrayList<MazePart> way = new ArrayList<>();
 
     public Frame() throws HeadlessException {
 
-        this.setSize(600,600);
+        this.setSize(599,674);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
 
@@ -29,6 +34,10 @@ public class Frame extends JFrame{
     public void createPanels(){
         newMazePanel();
         newButtonPanel();
+        for(int i=0; i<mazeWidthHeight*mazeWidthHeight;i++) {
+            mazePanel.getMaze().maze.get(i).addMouseListener(this);
+        }
+
         this.repaint();
         this.setVisible(true);
     }
@@ -79,5 +88,103 @@ public class Frame extends JFrame{
 
         this.keyListener = new MyKeyListener(mazeWidthHeight, this.mazePanel, player);
         this.addKeyListener(keyListener);
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        var mazeParte = e.getComponent();
+
+        if (mazeParte!=mazePanel.getMaze().maze.get(player.playerPosition) && !way.contains(mazeParte)){
+            System.out.println("klik inde");
+            mazePanel.getMaze().maze.get(player.playerPosition).setMouse(false);
+            for (var mazePart : way){
+                mazePart.setMouse(false);
+                mazePart.repaint();
+            }
+            this.way.clear();
+        }else if (e.getComponent()==mazePanel.getMaze().maze.get(player.playerPosition)) {
+            mazePanel.getMaze().maze.get(player.playerPosition).setMouse(true);
+            this.way = mazePanel.getMaze().maze.get(player.playerPosition).findWay(mazePanel.getMaze().maze);
+            for (var mazePart : way){
+                mazePart.setMouse(true);
+            }
+        }else if (way.contains(mazeParte)){
+            for(var mazePart : mazePanel.getMaze().maze){
+                if (mazePart == mazeParte){
+                    for (var mazePartWay : way){
+                        mazePartWay.setMouse(false);
+                        mazePartWay.repaint();
+                    }
+                    player.moveMouse(mazePanel.getMaze().maze, mazePart.getPosition());
+                    break;
+                }
+            }
+            way.clear();
+        }
+        /*
+        else if(e.getComponent()!=mazePanel.getMaze().maze.get(player.playerPosition) && way!=null){
+            System.out.println("cc");
+            if (!way.contains(mazeParte) ){
+                for(var mazePart : way){
+                    mazePart.setMouse(false);
+                    mazePart.repaint();
+                    repaint();
+                }
+            }
+        }
+
+         */
+        repaint();
+    }
+
+    private boolean containsArray(MazePart mazePart){
+        for (var mazePartWay : way){
+            if(mazePartWay==mazePart){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        /*
+        if(way!=null) {
+            for (var mazePart : way) {
+                if (mazePart == e.getComponent()) {
+                    mazePart.setMouse(true);
+                    mazePart.repaint();
+                    repaint();
+                }
+            }
+        }
+
+         */
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        /*
+        if(way!=null) {
+            for (var mazePart : way) {
+                if (mazePart == e.getComponent()) {
+                    mazePart.setMouse(false);
+                    mazePart.repaint();
+                    repaint();
+                }
+            }
+        }
+
+         */
     }
 }

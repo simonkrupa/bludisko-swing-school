@@ -2,6 +2,7 @@ package sk.stuba.fei.uim.oop.gui.mazes;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public abstract class MazePart extends JPanel {
     protected boolean lWall = true;
@@ -11,6 +12,7 @@ public abstract class MazePart extends JPanel {
     protected int position;
     protected boolean visited = false;
     protected boolean player = false;
+    protected boolean mouse = false;
 
     public MazePart(int position) {
         this.position = position;
@@ -71,5 +73,43 @@ public abstract class MazePart extends JPanel {
     public boolean isdWall() {
         return dWall;
     }
+
+    public void setMouse(boolean mouse) {
+        this.mouse = mouse;
+    }
+
+    public boolean isMouse() {
+        return mouse;
+    }
+
+    public ArrayList<MazePart> findWay(ArrayList<MazePart> maze){
+        int positions = this.position;
+        ArrayList<MazePart> way = new ArrayList<>();
+        while(!maze.get(positions).isrWall()){
+            way.add(maze.get(positions));
+            positions+=1;
+        }
+        way.add(maze.get(positions));
+        positions = this.position;
+        while(!maze.get(positions).islWall()){
+            way.add(maze.get(positions));
+            positions-=1;
+        }
+        way.add(maze.get(positions));
+        positions = this.position;
+        while(!maze.get(positions).isuWall()){
+            way.add(maze.get(positions));
+            positions-=13;
+        }
+        way.add(maze.get(positions));
+        positions = this.position;
+        while(!maze.get(positions).isdWall()){
+            way.add(maze.get(positions));
+            positions+=13;
+        }
+        way.add(maze.get(positions));
+        return way;
+    }
+
 
 }

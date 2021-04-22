@@ -1,6 +1,7 @@
 package sk.stuba.fei.uim.oop.gui.mazes;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class MazeCell extends MazePart {
 
@@ -12,6 +13,15 @@ public class MazeCell extends MazePart {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(Color.BLACK);
+        if(mouse && player){
+            this.setBackground(Color.CYAN);
+            this.setBackground(Color.CYAN);
+        }else if (mouse){
+            this.setBackground(Color.YELLOW);
+            this.setBackground(Color.YELLOW);
+        }else{
+            this.setBackground(Color.WHITE);
+        }
         if (uWall) {
             g.drawLine(0, 0, this.getWidth(), 0);
         }
@@ -28,4 +38,5 @@ public class MazeCell extends MazePart {
             g.drawOval(0, 0, this.getWidth(), this.getHeight());
         }
     }
+
 }

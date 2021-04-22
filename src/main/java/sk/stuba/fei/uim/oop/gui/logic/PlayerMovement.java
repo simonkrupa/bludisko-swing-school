@@ -27,18 +27,31 @@ public class PlayerMovement {
         maze.get(lastPlayerPosition).setPlayer(false);
         maze.get(lastPlayerPosition).repaint();
         maze.get(playerPosition).setPlayer(true);
-        if(maze.get(playerPosition) instanceof MazeFinish){
+        finishMove(maze);
+        frame.repaint();
+        maze.get(playerPosition).repaint();
+    }
+
+    public void moveMouse(ArrayList<MazePart> maze, int nextPosition){
+        maze.get(playerPosition).setPlayer(false);
+        this.playerPosition = nextPosition;
+        maze.get(playerPosition).setPlayer(true);
+        frame.repaint();
+        maze.get(playerPosition).repaint();
+        finishMove(maze);
+    }
+
+    public void finishMove(ArrayList<MazePart> maze){
+        if(maze.get(playerPosition) instanceof MazeFinish) {
             System.out.println("skuska");
             maze.get(playerPosition).setPlayer(false);
-            this.playerPosition = mazeWidthHeight+1;
-            this.lastPlayerPosition = mazeWidthHeight+1;
+            this.playerPosition = mazeWidthHeight + 1;
+            this.lastPlayerPosition = mazeWidthHeight + 1;
             maze.get(playerPosition).setPlayer(true);
             maze.get(lastPlayerPosition).repaint();
             frame.finishedGame();
             this.move(frame.mazePanel.getMaze().maze);
         }
-        frame.repaint();
-        maze.get(playerPosition).repaint();
     }
 
     public void setPlayerPosition(int playerPosition, ArrayList<MazePart> maze) {
