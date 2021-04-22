@@ -39,7 +39,7 @@ public class MyKeyListener implements KeyListener {
             System.out.println(player.playerPosition);
             player.setPlayerPosition(1, mazePanel.getMaze().maze);
         }
-        frame.cancelMouse();
+        frame.getMouseListener().cancelMouse();
     }
 
     @Override

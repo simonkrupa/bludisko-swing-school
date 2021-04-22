@@ -78,10 +78,6 @@ public abstract class MazePart extends JPanel {
         this.mouse = mouse;
     }
 
-    public boolean isMouse() {
-        return mouse;
-    }
-
     public ArrayList<MazePart> findWay(ArrayList<MazePart> maze){
         int positions = this.position;
         ArrayList<MazePart> way = new ArrayList<>();

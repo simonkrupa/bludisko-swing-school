@@ -1,7 +1,6 @@
 package sk.stuba.fei.uim.oop.gui.mazes;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public class MazeCell extends MazePart {
 

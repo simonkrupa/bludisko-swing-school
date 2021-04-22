@@ -3,7 +3,6 @@ package sk.stuba.fei.uim.oop.gui.logic;
 import sk.stuba.fei.uim.oop.gui.mazes.MazeFinish;
 import sk.stuba.fei.uim.oop.gui.mazes.MazePart;
 import sk.stuba.fei.uim.oop.gui.mazes.MazeWall;
-import sk.stuba.fei.uim.oop.gui.panels.ButtonPanel;
 import sk.stuba.fei.uim.oop.gui.Frame;
 
 import java.util.ArrayList;
@@ -11,12 +10,10 @@ import java.util.ArrayList;
 public class PlayerMovement {
     public int playerPosition;
     private int lastPlayerPosition;
-    private ButtonPanel buttonPanel;
     private Frame frame;
     private int mazeWidthHeight;
 
-    public PlayerMovement(ButtonPanel buttonPanel, Frame frame, int mazeWidthHeight) {
-        this.buttonPanel = buttonPanel;
+    public PlayerMovement(Frame frame, int mazeWidthHeight) {
         this.frame = frame;
         this.mazeWidthHeight = mazeWidthHeight;
         this.playerPosition = mazeWidthHeight+1;
@@ -43,7 +40,6 @@ public class PlayerMovement {
 
     public void finishMove(ArrayList<MazePart> maze){
         if(maze.get(playerPosition) instanceof MazeFinish) {
-            System.out.println("skuska");
             maze.get(playerPosition).setPlayer(false);
             this.playerPosition = mazeWidthHeight + 1;
             this.lastPlayerPosition = mazeWidthHeight + 1;
