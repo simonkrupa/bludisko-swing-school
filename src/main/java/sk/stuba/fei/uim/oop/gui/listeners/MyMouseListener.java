@@ -52,7 +52,7 @@ public class MyMouseListener implements MouseListener {
             this.way.clear();
         }else if (e.getComponent()==mazePanel.getMaze().maze.get(player.playerPosition)) {
             mazePanel.getMaze().maze.get(player.playerPosition).setMouse(true);
-            this.way = mazePanel.getMaze().maze.get(player.playerPosition).findWay(mazePanel.getMaze().maze);
+            this.way = mazePanel.getMaze().maze.get(player.playerPosition).findWay(mazePanel.getMaze().maze, mazePanel);
         }else if (containsArray(e.getComponent())){
             for(var mazePart : mazePanel.getMaze().maze){
                 if (mazePart == mazeParte){

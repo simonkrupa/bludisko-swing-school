@@ -26,27 +26,22 @@ public class MyActionListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==buttonPanel.wButton){
-            System.out.println("Up");
             player.setPlayerPosition(-mazeWidthHeight, mazePanel.getMaze().maze);
             frame.getMouseListener().cancelMouse();
         }
         if(e.getSource()==buttonPanel.aButton){
-            System.out.println("Left");
             player.setPlayerPosition(-1, mazePanel.getMaze().maze);
             frame.getMouseListener().cancelMouse();
         }
         if(e.getSource()==buttonPanel.sButton){
-            System.out.println("Down");
             player.setPlayerPosition(mazeWidthHeight, mazePanel.getMaze().maze);
             frame.getMouseListener().cancelMouse();
         }
         if(e.getSource()==buttonPanel.dButton){
-            System.out.println("Right");
             player.setPlayerPosition(1, mazePanel.getMaze().maze);
             frame.getMouseListener().cancelMouse();
         }
         if(e.getSource()==buttonPanel.restartButton){
-            System.out.println("restart");
             frame.remove(frame.mazePanel);
             frame.remove(frame.buttonPanel);
             frame.repaint();

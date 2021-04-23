@@ -25,4 +25,7 @@ public class MazePanel extends JPanel {
         return maze;
     }
 
+    public int getMazeWidthHeight() {
+        return mazeWidthHeight;
+    }
 }

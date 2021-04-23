@@ -1,5 +1,7 @@
 package sk.stuba.fei.uim.oop.gui.mazes;
 
+import sk.stuba.fei.uim.oop.gui.panels.MazePanel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -78,7 +80,7 @@ public abstract class MazePart extends JPanel {
         this.mouse = mouse;
     }
 
-    public ArrayList<MazePart> findWay(ArrayList<MazePart> maze){
+    public ArrayList<MazePart> findWay(ArrayList<MazePart> maze, MazePanel mazePanel){
         int positions = this.position;
         ArrayList<MazePart> way = new ArrayList<>();
         while(!maze.get(positions).isrWall()){
@@ -95,13 +97,13 @@ public abstract class MazePart extends JPanel {
         positions = this.position;
         while(!maze.get(positions).isuWall()){
             way.add(maze.get(positions));
-            positions-=13;
+            positions-=mazePanel.getMazeWidthHeight();
         }
         way.add(maze.get(positions));
         positions = this.position;
         while(!maze.get(positions).isdWall()){
             way.add(maze.get(positions));
-            positions+=13;
+            positions+=mazePanel.getMazeWidthHeight();
         }
         way.add(maze.get(positions));
         return way;

@@ -21,7 +21,6 @@ public class Frame extends JFrame {
     private MyMouseListener mouseListener;
 
     public Frame() throws HeadlessException {
-
         this.setSize(599,674);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
